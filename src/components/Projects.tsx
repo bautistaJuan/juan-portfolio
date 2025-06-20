@@ -12,6 +12,8 @@ import {
   SiGit,
   SiGithub
 } from "react-icons/si";
+import { Lang } from "../App";
+import labels from "../data/label";
 export const techIcons: Record<string, JSX.Element> = {
   React: <SiReact className="text-sky-500" title="React" />,
   "Next.js": <SiNextdotjs className="text-black dark:text-white" title="Next.js" />,
@@ -25,11 +27,11 @@ export const techIcons: Record<string, JSX.Element> = {
   Git: <SiGit className="text-orange-500" title="Git" />,
   Github: <SiGithub className="text-gray-700 dark:text-gray-300" title="GitHub" />,
 };
-const Projects: React.FC = () => (
+const Projects: React.FC<{ lang: Lang }> = ({ lang }) => (
   <section className="my-12">
-    <h3 className="text-lg font-semibold mb-2">Projects</h3>
+    <h3 className="text-lg font-semibold mb-2">{labels[lang].projects}</h3>
     <ul className="space-y-4">
-      {profile.projects.map(project => (
+      {profile[lang].projects.map(project => (
         <li
           key={project.name}
           className="group bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-6 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1"

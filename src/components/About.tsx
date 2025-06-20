@@ -1,10 +1,13 @@
 import React from "react";
+import { Lang } from "../App";
+import { profile } from "../data/profile";
+import labels from "../data/label";
+const About: React.FC<{ lang: Lang }> = ({ lang }) => (
 
-const About: React.FC = () => (
   <section className="my-12">
-    <h3 className="text-lg font-semibold mb-2">About Me</h3>
+    <h3 className="text-lg font-semibold mb-2">{labels[lang].about}</h3>
     <p>
-      I am Juan Bautista, a frontend developer who is constantly growing, passionate about creating clean, modern, and functional digital experiences. With a strong interest in technologies such as React, Next.js, Tailwind CSS, and Firebase, I strive to build practical and well-designed applications that provide real value.
+      {profile[lang].about}
     </p>
   </section>
 );

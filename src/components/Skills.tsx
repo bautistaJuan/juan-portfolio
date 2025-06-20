@@ -1,11 +1,13 @@
 import React from "react";
 import { profile } from "../data/profile";
 import { techIcons } from "./Projects";
-const Skills: React.FC = () => (
+import { Lang } from "../App";
+import labels from "../data/label";
+const Skills: React.FC<{ lang: Lang }> = ({ lang }) => (
   <section className="my-12">
-    <h3 className="text-lg font-semibold mb-2">Skills</h3>
+    <h3 className="text-lg font-semibold mb-2">{labels[lang].skills}</h3>
     <ul className="flex flex-wrap gap-2">
-      {profile.skills.map(skill => (
+      {profile[lang].skills.map(skill => (
         <li
           key={skill}
           className="px-3 py-2 bg-gray-100 rounded-full text-2xl font-medium hover:bg-black cursor-pointer"
