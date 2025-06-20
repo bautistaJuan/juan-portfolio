@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { profile } from "../data/profile";
 import { Lang } from "../App";
-import foto from "../assets/laptop-removebg.png";
+import foto from "/laptop-removebg.png";
 const Hero: React.FC<{ lang: Lang }> = ({ lang }) => {
   const [showBio, setShowBio] = useState(false);
 
