@@ -30,18 +30,22 @@ export const techIcons: Record<string, JSX.Element> = {
 const Projects: React.FC<{ lang: Lang }> = ({ lang }) => (
   <section className="my-12">
     <h3 className="text-lg font-semibold mb-2">{labels[lang].projects}</h3>
-    <ul className="space-y-4">
-      {profile[lang].projects.map(project => (
+    <ul className="space-y-6">
+      {profile[lang].projects.map((project) => (
         <li
           key={project.name}
-          className="group bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-6 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+          className="group bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-6 shadow-md cursor-pointer
+                 transform transition-transform duration-500
+                 hover:scale-105 hover:-translate-y-2 hover:shadow-2xl
+                 hover:rotate-1 hover:dark:rotate-[2deg]"
+          style={{ perspective: "1000px" }}
         >
           <div className="flex justify-between items-start mb-2">
             <a
               href={project.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-xl font-semibold text-gray-800 dark:text-white group-hover:underline"
+              className="text-xl font-semibold text-gray-800 dark:text-white group-hover:underline transition-colors duration-300"
             >
               {project.name}
             </a>
@@ -50,7 +54,7 @@ const Projects: React.FC<{ lang: Lang }> = ({ lang }) => (
                 href={project.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-500 hover:text-black dark:hover:text-white"
+                className="text-gray-500 hover:text-black dark:hover:text-white transition-colors duration-300"
                 aria-label="GitHub repository"
               >
                 {techIcons.Github}
@@ -58,16 +62,16 @@ const Projects: React.FC<{ lang: Lang }> = ({ lang }) => (
             )}
           </div>
 
-          <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-4">
+          <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-4 transition-colors duration-300">
             {project.description}
           </p>
 
           <div className="flex flex-wrap gap-2 items-center">
-            {project.tech?.map(tech =>
+            {project.tech?.map((tech) =>
               techIcons[tech] ? (
                 <div
                   key={tech}
-                  className="flex text-lg items-center justify-center w-9 h-9 rounded-full bg-gray-100 dark:bg-gray-700 hover:scale-110 transition-transform"
+                  className="flex text-lg items-center justify-center w-9 h-9 rounded-full bg-gray-100 dark:bg-gray-700 hover:scale-110 transition-transform duration-300"
                   title={tech}
                 >
                   {techIcons[tech]}
@@ -75,7 +79,7 @@ const Projects: React.FC<{ lang: Lang }> = ({ lang }) => (
               ) : (
                 <span
                   key={tech}
-                  className="text-lg px-2 py-1 bg-gray-200 dark:bg-gray-700 rounded-md text-gray-800 dark:text-white"
+                  className="text-lg px-2 py-1 bg-gray-200 dark:bg-gray-700 rounded-md text-gray-800 dark:text-white transition-colors duration-300"
                 >
                   {tech}
                 </span>
@@ -83,7 +87,6 @@ const Projects: React.FC<{ lang: Lang }> = ({ lang }) => (
             )}
           </div>
         </li>
-
       ))}
     </ul>
   </section>
