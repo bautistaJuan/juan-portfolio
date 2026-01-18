@@ -28,33 +28,26 @@ export const techIcons: Record<string, JSX.Element> = {
   Github: <SiGithub className="text-gray-700 dark:text-gray-300" title="GitHub" />,
 };
 const Projects: React.FC<{ lang: Lang }> = ({ lang }) => (
-  <section className="my-12">
-    <h3 className="text-lg font-semibold mb-2">{labels[lang].projects}</h3>
-    <ul className="space-y-6">
+  <section className="my-20">
+    <h3 className="text-2xl font-bold mb-10 text-slate-900 dark:text-emerald-50 flex items-center gap-3">
+      <span className="w-8 h-1 bg-primary-600 dark:bg-primary-400 rounded-full"></span>
+      {labels[lang].projects}
+    </h3>
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
       {profile[lang].projects.map((project) => (
-        <li
+        <div
           key={project.name}
-          className="group bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-6 shadow-md cursor-pointer
-                 transform transition-transform duration-500
-                 hover:scale-105 hover:-translate-y-2 hover:shadow-2xl
-                 hover:rotate-1 hover:dark:rotate-[2deg]"
-          style={{ perspective: "1000px" }}
+          className="group relative bg-white dark:bg-primary-900/40 border border-emerald-100 dark:border-primary-800/50 rounded-2xl p-8 shadow-sm 
+                 hover:shadow-xl hover:shadow-emerald-200/50 dark:hover:shadow-primary-900/20 
+                 transition-all duration-500 hover:-translate-y-2 flex flex-col h-full"
         >
-          <div className="flex justify-between items-start mb-2">
-            <a
-              href={project.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-xl font-semibold text-gray-800 dark:text-white group-hover:underline transition-colors duration-300"
-            >
-              {project.name}
-            </a>
+          <div className="absolute top-0 right-0 p-4 opacity-0 group-hover:opacity-100 transition-opacity">
             {project.github && (
               <a
                 href={project.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-500 hover:text-black dark:hover:text-white transition-colors duration-300"
+                className="text-emerald-600 dark:text-emerald-400 hover:scale-125 transition-transform"
                 aria-label="GitHub repository"
               >
                 {techIcons.Github}
@@ -62,16 +55,22 @@ const Projects: React.FC<{ lang: Lang }> = ({ lang }) => (
             )}
           </div>
 
-          <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-4 transition-colors duration-300">
-            {project.description}
-          </p>
+          <div className="mb-6">
+            <h4 className="text-xl font-bold text-slate-900 dark:text-emerald-50 mb-3 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
+              {project.name}
+            </h4>
+            <div className="w-12 h-1 bg-emerald-100 dark:bg-primary-800 rounded-full mb-4 group-hover:w-20 transition-all duration-500"></div>
+            <p className="text-slate-600 dark:text-emerald-100/70 text-sm leading-relaxed mb-6">
+              {project.description}
+            </p>
+          </div>
 
-          <div className="flex flex-wrap gap-2 items-center">
+          <div className="mt-auto flex flex-wrap gap-2 items-center">
             {project.tech?.map((tech) =>
               techIcons[tech] ? (
                 <div
                   key={tech}
-                  className="flex text-lg items-center justify-center w-9 h-9 rounded-full bg-gray-100 dark:bg-gray-700 hover:scale-110 transition-transform duration-300"
+                  className="flex text-xl items-center justify-center w-10 h-10 rounded-xl bg-emerald-50 dark:bg-primary-800/50 text-emerald-700 dark:text-emerald-300 hover:bg-primary-600 hover:text-white dark:hover:bg-primary-400 dark:hover:text-primary-950 transition-all duration-300"
                   title={tech}
                 >
                   {techIcons[tech]}
@@ -79,16 +78,26 @@ const Projects: React.FC<{ lang: Lang }> = ({ lang }) => (
               ) : (
                 <span
                   key={tech}
-                  className="text-lg px-2 py-1 bg-gray-200 dark:bg-gray-700 rounded-md text-gray-800 dark:text-white transition-colors duration-300"
+                  className="text-xs font-semibold px-3 py-1 bg-emerald-50 dark:bg-primary-800/50 text-emerald-700 dark:text-emerald-300 rounded-lg group-hover:bg-primary-600 group-hover:text-white dark:group-hover:bg-primary-400 dark:group-hover:text-primary-950 transition-colors"
                 >
                   {tech}
                 </span>
               )
             )}
           </div>
-        </li>
+
+          <a
+            href={project.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-8 inline-flex items-center text-sm font-bold text-primary-700 dark:text-primary-400 hover:underline gap-2 group/link"
+          >
+            {lang === "en" ? "View Project" : "Ver Proyecto"}
+            <span className="transform group-hover/link:translate-x-1 transition-transform">→</span>
+          </a>
+        </div>
       ))}
-    </ul>
+    </div>
   </section>
 );
 

@@ -11,20 +11,30 @@ const Hero: React.FC<{ lang: Lang }> = ({ lang }) => {
   }, [lang]); // re-dispara cuando cambia el idioma
 
   return (
-    <section className="py-16 text-center dark:text-white relative overflow-hidden">
+    <section className="py-20 text-center relative overflow-hidden">
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-emerald-100/20 via-transparent to-transparent dark:from-primary-900/10 z-0 pointer-events-none"></div>
 
-      <div className="relative z-10 bg-white/70 dark:bg-gray-900/70 rounded-lg p-6 max-w-xl mx-auto">
-        <h1 className="text-4xl font-bold mb-2">{profile[lang].name}</h1>
-        <h2 className="text-xl text-gray-600 mb-4 dark:text-white">
+      <div className="relative z-10 p-6 max-w-2xl mx-auto">
+        <h1 className="text-5xl font-extrabold mb-4 tracking-tight text-slate-900 dark:text-emerald-50">
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-emerald-500 dark:from-primary-400 dark:to-emerald-300">
+            {profile[lang].name}
+          </span>
+        </h1>
+        <h2 className="text-2xl font-medium text-emerald-800 dark:text-emerald-200 mb-8">
           {profile[lang].title}
         </h2>
-        <img
-          src={foto}
-          alt="Laptop"
-          className="w-56 sm:w-2/4  mx-auto object-contain select-none"
-        />
+
+        <div className="relative mb-10 group">
+          <div className="absolute -inset-1 bg-gradient-to-r from-primary-600 to-emerald-500 rounded-full blur opacity-25 group-hover:opacity-40 transition duration-1000 group-hover:duration-200"></div>
+          <img
+            src={foto}
+            alt="Laptop"
+            className="relative w-64 sm:w-80 mx-auto object-contain select-none transition-transform duration-500 group-hover:scale-105"
+          />
+        </div>
+
         <p
-          className={`text-gray-700 dark:text-gray-300 transition-opacity duration-700 ease-in-out ${showBio ? "opacity-100" : "opacity-0"
+          className={`text-lg leading-relaxed text-slate-700 dark:text-emerald-100/80 transition-all duration-1000 ease-in-out ${showBio ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
             }`}
         >
           {profile[lang].bio}
