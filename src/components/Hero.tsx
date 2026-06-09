@@ -32,13 +32,6 @@ const Hero: React.FC<{ lang: Lang }> = ({ lang }) => {
             className="relative w-64 sm:w-80 mx-auto object-contain select-none transition-transform duration-500 group-hover:scale-105"
           />
         </div>
-
-        <p
-          className={`text-lg leading-relaxed text-slate-700 dark:text-emerald-100/80 transition-all duration-1000 ease-in-out ${showBio ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-            }`}
-        >
-          {profile[lang].bio}
-        </p>
       </div>
     </section>
 
